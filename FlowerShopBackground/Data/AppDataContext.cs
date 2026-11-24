@@ -15,6 +15,9 @@ namespace FlowerShopBackground.Data
         public DbSet<Street> Streets { get; set; }
         public DbSet<Datalogs> DatalogsUsers { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Korzina> Korzinas { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<User_orders> UserOrders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +29,9 @@ namespace FlowerShopBackground.Data
             modelBuilder.Entity<Street>().ToTable("streets");
             modelBuilder.Entity<Datalogs>().ToTable("datalogs");
             modelBuilder.Entity<Product>().ToTable("products");
+            modelBuilder.Entity<Korzina>().ToTable("korzina");
+            modelBuilder.Entity<Order>().ToTable("orders");
+            modelBuilder.Entity<User_orders>().ToTable("user_orders");
             
 
         }

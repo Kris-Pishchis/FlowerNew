@@ -48,12 +48,11 @@ namespace FlowerShopBackground.Controllers
                                             DatalogsId = u.DatalogsId,
                                             StreetId = u.StreetId,
 
-                                            // Убираем u != null, используем оператор ?? на случай, если само поле в БД может быть NULL
                                             Home = u.Home ?? "Не указана",
                                             Apartment = u.Apartment ?? "Не указана",
 
                                             RoleName = r.Name,
-                                            // Безопасное получение имени улицы для Left Join
+                                            
                                             StreetName = s.Name ?? "Не указана",
                                             LoginName = d.Login
                                         }).FirstOrDefaultAsync();

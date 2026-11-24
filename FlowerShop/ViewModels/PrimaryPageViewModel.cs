@@ -3,6 +3,7 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using FlowerShop.Services;
 using FlowerShop.Services.api;
 using FlowerShop.Services.HelpHashMethods;
 using FlowerShop.Services.interfaces;
@@ -84,6 +85,30 @@ namespace FlowerShop.ViewModels
                 _selectedProduct = prod;
                 return;
             }
+        }
+
+        [RelayCommand]
+        public async Task GoToCart()
+        {
+            await _mainViewModel.GoToCart(_currentWindow);
+        }
+
+        [RelayCommand]
+        public async Task GoToOrder()
+        {
+            await _mainViewModel.GotoOrder(_currentWindow);
+        }
+
+        [RelayCommand]
+        public async Task GoToPrimary()
+        {
+            await _mainViewModel.GoToSystem(_currentWindow);
+        }
+        [RelayCommand]
+        private async Task BackToStart()
+        {
+            CurrentUser.LoginedUser = null;
+            _mainViewModel.CurrentGlobalScreen = new StartPageViewModel(_mainViewModel);
         }
 
     }

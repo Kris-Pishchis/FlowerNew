@@ -19,8 +19,13 @@
         <DataTemplate DataType="{x:Type vm:PrimaryPageViewModel}">
             <views:PrimaryPageView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CartPageViewModel}">
+            <views:CartPageWindow />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:OrderPageViewModel}">
+            <views:OrdersPageWindow />
+        </DataTemplate>
     </Application.DataTemplates>
-  
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>

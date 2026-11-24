@@ -26,8 +26,13 @@ namespace FlowerShop.ViewModels
         {
             CurrentGlobalScreen = new PrimaryPageViewModel(this, selectedWindow);
         }
-
-
-
+        public async Task GoToCart(Window selectedWindow)
+        {
+            CurrentGlobalScreen = new CartPageViewModel(this, selectedWindow);
+        }
+        public async Task GotoOrder(Window selectedWindow)
+        {
+            CurrentGlobalScreen = new OrderPageViewModel(this, selectedWindow);
+        }
     }
 }

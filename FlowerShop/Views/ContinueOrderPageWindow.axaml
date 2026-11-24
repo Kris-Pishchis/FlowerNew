@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FlowerShop.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="400" Height="350"
+        x:Class="FlowerShop.Views.ContinueOrderPageWindow"
+        x:DataType="vm:ContinueOrderPageViewModel"
+        Title="FlowerShop"
+        WindowStartupLocation="CenterScreen">
+    <!--<Design.DataContext>
+        <vm:AddProductViewModel/>
+    </Design.DataContext> -->
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Cursor" Value="hand"/>
+        </Style>
+    </Window.Styles>
+    <Grid>
+
+        <StackPanel>
+            <TextBlock Text="Фамилия"/>
+            <TextBox Text="{Binding Family}" />
+            <TextBlock Text="Имя"/>
+            <TextBox Text="{Binding Name}"/>
+            <TextBlock Text="Отчество"/>
+            <TextBox Text="{Binding Father}"/>
+            <TextBlock Text="Телефон"/>
+            <MaskedTextBox Text="{Binding Phone}" Mask="+7 000  000-00-00" PromptChar="X"/>
+            <TextBlock Text="Адрес"/>
+            <Grid Background="Red" Height="35" ColumnDefinitions="33*,33*,33*">
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,5,0" Text="ул." VerticalAlignment="Center" />
+                        <TextBox TextWrapping="Wrap" Text="{Binding Street}" MaxWidth="100" VerticalContentAlignment="Center" Background="Transparent" BorderThickness="0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                     <TextBlock  Margin="5,0,5,0" Text="д." VerticalAlignment="Center" />
+                    <TextBox TextWrapping="Wrap" MaxWidth="100" Text="{Binding Home}" VerticalContentAlignment="Center" Background="Transparent" BorderThickness="0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <TextBlock Margin="5,0,5,0" Text="кв." VerticalAlignment="Center" />
+                    <TextBox TextWrapping="Wrap" MaxWidth="100" Text="{Binding Apart}" VerticalContentAlignment="Center" Background="Transparent" BorderThickness="0"/>
+                </StackPanel>
+            </Grid>
+            <StackPanel Margin="0,15,0,0" Orientation="Horizontal">
+                <Button Content="Оформить" Command="{Binding CloseWinTrueCommand}" CommandParameter="{Binding $parent[Window]}" Margin="0,0,5,0" Background="#33CF33" Foreground="White">
+                     <Button.Styles>
+                            <Style Selector=":pointerover /template/ ContentPresenter">
+                                <Setter Property="Background" Value="#46C546"/>
+                                <Setter Property="Foreground" Value="white"/>
+                            </Style>
+                    </Button.Styles>
+                </Button>
+                    <Button Content="Назад" Command="{Binding CloseWinFalseCommand}" CommandParameter="{Binding $parent[Window]}" Background="#FF3554" Foreground="White">
+                        <Button.Styles>
+                            <Style Selector=":pointerover /template/ ContentPresenter">
+                                <Setter Property="Background" Value="#F1586F"/>
+                                <Setter Property="Foreground" Value="white"/>
+                            </Style>
+                    </Button.Styles>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

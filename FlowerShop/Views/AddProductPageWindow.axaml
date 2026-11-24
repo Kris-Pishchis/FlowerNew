@@ -3,7 +3,7 @@
         xmlns:vm="using:FlowerShop.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" Width="250" Height="180"
+        mc:Ignorable="d" Width="250" Height="200"
         x:Class="FlowerShop.Views.AddProductPageWindow"
         x:DataType="vm:AddProductViewModel"
         Title="FlowerShop"
@@ -20,19 +20,23 @@
                 </TextBlock>
             </ScrollViewer>
         <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
-            <TextBlock  Text="Введите количество" HorizontalAlignment="Stretch"/>
-            <NumericUpDown Minimum="1" Maximum="999" FormatString="0" Increment="1" HorizontalAlignment="Stretch">
+            <TextBlock Text="Введите количество" HorizontalAlignment="Stretch"/>
+            <NumericUpDown Text="{Binding Quantity, Mode=TwoWay}" Minimum="1" Maximum="999" FormatString="0" Increment="1" HorizontalAlignment="Stretch">
             </NumericUpDown>
+            <TextBlock Margin="0,5,0,0">
+                <Run Text="Итоговая цена: "/>
+                <Run Text="{Binding TotalCost, Mode=TwoWay}"/>
+            </TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="2" VerticalAlignment="Center">
-            <Button Foreground="White" Background="#2ED16D" Cursor="Hand" Content="В корзину" Command="{Binding GoBackCommand}" CommandParameter="{Binding $parent[Window]}" HorizontalAlignment="Stretch" Margin="0,10,0,0">
+            <Button Foreground="White" Background="#2ED16D" Cursor="Hand" Content="В корзину" Command="{Binding AddToCartCommand}" CommandParameter="{Binding $parent[Window]}" HorizontalAlignment="Stretch" Margin="0,10,0,0">
                 <Button.Styles>
                     <Style Selector=":pointerover /template/ ContentPresenter">
                         <Setter Property="Background" Value="#9CF29C"/>
                     </Style>
                 </Button.Styles>
             </Button>
-            <Button Foreground="White" Background="#F83077" Cursor="Hand" Content="Отмена" Command="{Binding GoBackCommand}" CommandParameter="{Binding $parent[Window]}" HorizontalAlignment="Stretch">
+            <Button Foreground="White" Background="#F83077" Cursor="Hand" Command = "{Binding CloseWinCommand}" Content="Отмена" CommandParameter="{Binding $parent[Window]}" HorizontalAlignment="Stretch">
                 <Button.Styles>
                     <Style Selector=":pointerover /template/ ContentPresenter">
                         <Setter Property="Background" Value="#D30B52"/>

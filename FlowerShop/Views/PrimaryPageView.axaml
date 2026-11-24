@@ -16,6 +16,25 @@
         <Grid Grid.Row="0" Background="#726A6A">
             <TextBlock FontSize="24" FontWeight="Bold"  Foreground="#FF3554" VerticalAlignment="Center" Margin="10,0,0,0" Text="FlowerShop"/>
             <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="#FF3554"/>
+            <ComboBox VerticalAlignment="Center" HorizontalAlignment="Right" MinWidth="200" Margin="0,0,15,0">
+                <ComboBox.Items>
+                    <Button Command="{Binding GoToCartCommand}" Content="Корзина" HorizontalAlignment="Stretch" />
+                    <Button Command="{Binding GoToOrderCommand}" Content="Заказы" HorizontalAlignment="Stretch" />
+                    <Button Command="{Binding BackToStartCommand}" Content="Выход" HorizontalAlignment="Stretch" />
+                </ComboBox.Items>
+                 <ComboBox.Styles>
+                    <Style Selector="ComboBoxItem">
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                 </ComboBox.Styles>
+               <ComboBox.Resources>
+                    <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="#1E1E1E"/>
+                    <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush" Color="#444444"/>
+                    <Thickness x:Key="ComboBoxDropdownHasPaddingThemeThickness">0</Thickness>
+                    <SolidColorBrush x:Key="ComboBoxTemplatePanelBackground" Color="Transparent"/>
+                </ComboBox.Resources>
+            </ComboBox>
         </Grid>
         <ScrollViewer Grid.Row="1">
             <Grid Grid.Row="1" Background="#302727">
@@ -34,11 +53,11 @@
                             <DataTemplate>
                                 <Grid>
                                     <Button ZIndex="5" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Cursor="Hand" CommandParameter="{Binding}" Command="{Binding $parent[ListBox].DataContext.AddToKorzinaProductCommand}"/>
-                                    <StackPanel Width="125" Height="125" Margin="15" Orientation="Vertical">
-                                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center"/>
-                                        <Image Width="50" Height="50" Source="{Binding DehashedImage}"/>
-                                        <TextBlock Text="{Binding Cost}" HorizontalAlignment="Center"/>
-                                    </StackPanel>
+                                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Width="180" Height="180" Margin="15">
+                                        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Name}"/>
+                                        <Image VerticalAlignment="Center" Width="50" Height="50" Source="{Binding DehashedImage}"/>
+                                        <TextBlock VerticalAlignment="Bottom" TextWrapping="Wrap"  Text="{Binding Cost}" HorizontalAlignment="Center"/>
+                                    </Grid>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

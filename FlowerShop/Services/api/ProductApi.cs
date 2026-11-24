@@ -17,7 +17,7 @@ namespace FlowerShop.Services.api
 
         public ProductApi()
         {
-            _httpClient = new HttpClient { BaseAddress = new Uri("http://100.101.246.43:80") };
+            _httpClient = new HttpClient { BaseAddress = new Uri("http://100.65.4.111:5000") };
         }
         
         public async Task<List<Product>> GetProductsAsync()
@@ -36,6 +36,5 @@ namespace FlowerShop.Services.api
                 return new List<Product>();
             }
         }
-
     }
 }

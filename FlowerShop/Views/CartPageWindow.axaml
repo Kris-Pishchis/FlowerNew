@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FlowerShop.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:flowershop="using:FlowerShop"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="FlowerShop.Views.CartPageWindow"
+        x:DataType="vm:CartPageViewModel"
+        >
+    <!--<Design.DataContext>
+        <vm:CartPageViewModel/>
+    </Design.DataContext> -->
+   <Grid RowDefinitions="20*, 80*">
+    
+        <Grid Grid.Row="0" Background="#726A6A">
+            <TextBlock FontSize="24" FontWeight="Bold"  Foreground="#FF3554" VerticalAlignment="Center" Margin="10,0,0,0" Text="FlowerShop"/>
+            <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Foreground="#FF3554"/>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Cursor="Hand" Command="{Binding OpenOrderWindowCommand}" Background="#33CF33" Foreground="White" Content="Оформить заказ" HorizontalAlignment="Right" Margin="0,0,15,0">
+                <Button.Styles>
+                    <Style Selector=":pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#46C546"/>
+                        <Setter Property="Foreground" Value="white"/>
+                    </Style>
+                </Button.Styles>
+            </Button>
+            
+            <Button Cursor="Hand" Command="{Binding GoBackCommand}" Background="#FF3554" Foreground="White" Content="На главную" HorizontalAlignment="Right" Margin="0,0,15,0">
+                <Button.Styles>
+                    <Style Selector=":pointerover /template/ ContentPresenter">
+                        <Setter Property="Background" Value="#F1586F"/>
+                        <Setter Property="Foreground" Value="white"/>
+                    </Style>
+                </Button.Styles>
+            </Button>
+            </StackPanel>
+        </Grid>
+        <Grid RowDefinitions="10*, 90*" Grid.Row="1">
+            <StackPanel VerticalAlignment="Center" Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Width="250" TextAlignment="Center" Text="Наименование" Margin="0,0,50,0"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Количество" Margin="0,0,50,0"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Цена за шт." Margin="0,0,50,0"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Общая за шт." Margin="0,0,50,0"/>
+            </StackPanel>
+            <ListBox Grid.Row="1" ItemsSource="{Binding GettedCart}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" TextWrapping="Wrap" Width="250" Margin="0,0,50,0" Text="{Binding ProductName}"/>
+                            <TextBlock VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Width="100" Margin="0,0,50,0" Text="{Binding Quantity}"/>
+                            <TextBlock VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Width="100" Margin="0,0,50,0" Text="{Binding Cost}"/>
+                            <TextBlock VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Width="100" Margin="0,0,50,0" Text="{Binding Cost}"/>
+                            <Button CommandParameter="{Binding}" Command="{Binding $parent[ListBox].DataContext.DeleteFromCartCommand}" Content="X" Background="Red" Width="35" Height="35" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -11,7 +11,7 @@ builder.Services.AddDbContext<AppDataContext>(options =>
            .UseSnakeCaseNamingConvention());
 
 builder.Services.AddControllers();
-builder.WebHost.UseUrls("http://0.0.0");
+builder.WebHost.UseUrls("http://0.0.0:5000");
 
 builder.Services.AddOpenApi();
 builder.Services.AddCors(options =>
